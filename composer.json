@@ -1,5 +1,5 @@
 {
-  "name": "f9webltd/laravel-api-response-helpers",
+  "name": "tgatz/laravel-api-response-helpers",
   "description": "A super simple package allowing for consistent API responses throughout your Laravel application ",
   "keywords": [
     "laravel",

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace F9Web;
+namespace Tgatz;
 
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
@@ -82,6 +82,22 @@ trait ApiResponseHelpers
     }
 
     /**
+     * @param string|null $message
+     * @param int $code
+     * @param array|Arrayable|JsonSerializable|null $data
+     */
+    public function respondComplexError(?string $message = null, ?int $code = 400, ?array $data = null):JsonResponse
+    {
+        return $this->apiResponse(
+            ['success'   => false,
+             'errorcode' => $code,
+             'data'      => $data,
+             'error'     => $message ?? 'Error'],
+            $code
+        );
+    }
+
+    /**
      * @param array|Arrayable|JsonSerializable|null $data
      */
     public function respondCreated($data = null): JsonResponse
@@ -92,7 +108,7 @@ trait ApiResponseHelpers
           Response::HTTP_CREATED
         );
     }
-    
+
     /**
      * @param string|\Exception $message
      * @param  string|null  $key
